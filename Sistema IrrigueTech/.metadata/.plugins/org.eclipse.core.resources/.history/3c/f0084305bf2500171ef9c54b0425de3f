@@ -1,0 +1,57 @@
+package com.joice.sistemaIrrigamento.model;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import com.joice.sistemaIrrigamento.view.PrincipalView;
+
+/**
+ * 
+ * @author Joice Marques
+ * @since 10/04/2017
+ * @category model
+ * 
+ */
+
+public class Atendimento {
+	private String dataAtendimento;
+	private Cliente cliente;
+	
+	
+	ConnectionModel conn = new ConnectionModel();
+	PreparedStatement pst = null;
+	ResultSet rs = null;
+	
+	public Atendimento(){
+		// construtor sem parametros;
+	}
+	
+	//construtor com parametros
+	public Atendimento(String dataAtendimento, Cliente cliente){
+		this.dataAtendimento = dataAtendimento;
+		this.cliente = cliente;		
+	}
+	
+	public void preencherTabelaRelatorio(String sql) throws SQLException{
+		PrincipalView pV = new PrincipalView();
+		ArrayList dados = new ArrayList();
+		String[] colunas = new String[]{"Data Atendimento", "Descricao Atendimento", "Equipe Alocada"};
+		
+		pst = conn.getConexao().prepareStatement(sql);
+		rs = pst.executeQuery();
+		
+		try {
+			while(rs.next()){
+				dados.add(new Object[]{rs.getString("data_atendimento"), rs.getString("descricao_atendimento"), rs.getString("nome_equipe")});
+			}			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		ModeloTabela modelo = new ModeloTabela(dados, colunas);
+		pV.tbRelatorio.setModel(modelo);		
+    }
+	
+	
+}

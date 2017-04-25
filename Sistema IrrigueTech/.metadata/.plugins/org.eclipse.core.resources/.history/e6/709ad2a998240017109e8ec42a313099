@@ -1,0 +1,22 @@
+package com.joice.sistemaIrrigamento.controller;
+
+import java.sql.SQLException;
+
+/**
+ * 
+ * @author Joice Marques
+ * @since 10/04/2017
+ * @category model
+ * 
+ */
+
+import com.joice.sistemaIrrigamento.model.Cliente;
+import com.joice.sistemaIrrigamento.model.ConnectionModel;
+import com.joice.sistemaIrrigamento.view.AtendimentoView;
+import com.joice.sistemaIrrigamento.view.LoginView;
+
+public class ClienteController {
+	Cliente cliente = new Cliente();
+	ConnectionModel conMod = new ConnectionModel();
+	
+}

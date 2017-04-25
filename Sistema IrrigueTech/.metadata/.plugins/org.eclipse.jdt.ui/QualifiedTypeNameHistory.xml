@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="com.joice.sistemaIrrigamento.view.LoginView"/>
+<fullyQualifiedTypeName name="com.joice.sistemaIrrigamento.model.MangueiraModelo"/>
+<fullyQualifiedTypeName name="com.joice.sistemaIrrigamento.view.PrincipalView"/>
+<fullyQualifiedTypeName name="com.joice.sistemaIrrigamento.model.Atendimento"/>
+<fullyQualifiedTypeName name="com.joice.sistemaIrrigamento.model.ConnectionModel"/>
+<fullyQualifiedTypeName name="com.joice.sistemaIrrigamento.view.AtendimentoView"/>
+</qualifiedTypeNameHistroy>

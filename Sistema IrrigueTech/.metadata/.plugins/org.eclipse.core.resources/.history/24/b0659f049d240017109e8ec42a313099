@@ -1,0 +1,88 @@
+package com.joice.sistemaIrrigamento.model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 
+ * @author Joice Marques
+ * @since 10/04/2017
+ * @category model
+ * 
+ */
+
+public class Cliente {	
+	private int idCliente;
+	private String nomeCliente;
+	private String documento_cliente;
+	private int quantidade_mangueiras;
+	private String pesquisa;
+	
+	Connection conn = null;
+	PreparedStatement pst = null;
+	ResultSet rs = null;
+
+	public Cliente(){
+		//metodo construtor sem parametros
+	}
+	
+	public Cliente(String nomeCliente, String documento_cliente, int quantidade_mangueiras) {
+		this.idCliente = idCliente;
+		this.nomeCliente = nomeCliente;
+		this.documento_cliente = documento_cliente;
+		this.quantidade_mangueiras = quantidade_mangueiras;
+	}
+	
+	public String getPesquisa() {
+		return pesquisa;
+	}
+
+	public void setPesquisa(String pesquisa) {
+		this.pesquisa = pesquisa;
+	}
+
+	public String getNomeCliente() {
+		return nomeCliente;
+	}
+
+	public void setNomeCliente(String nomeCliente) {
+		this.nomeCliente = nomeCliente;
+	}
+
+	public String getDocumento_cliente() {
+		return documento_cliente;
+	}
+
+	public void setDocumento_cliente(String documento_cliente) {
+		this.documento_cliente = documento_cliente;
+	}
+
+	public int getQuantidade_mangueiras() {
+		return quantidade_mangueiras;
+	}
+
+	public void setQuantidade_mangueiras(int quantidade_mangueiras) {
+		this.quantidade_mangueiras = quantidade_mangueiras;
+	}
+	
+	public void preencherTabelaCliente(String sql) throws SQLException{
+		List dados = new ArrayList();
+		String[] Colunas = new String[]{"Nome Cliente", "Documento", "Quantidade Mangueiras"};
+		
+		conn = ConnectionModel.getConexao();		
+		pst = conn.prepareStatement(sql);
+		rs = pst.executeQuery();
+		
+		try {
+			while
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	
+}

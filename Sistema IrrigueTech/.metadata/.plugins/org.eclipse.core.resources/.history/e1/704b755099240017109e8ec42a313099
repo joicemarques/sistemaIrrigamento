@@ -1,0 +1,50 @@
+package com.joice.sistemaIrrigamento.model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+/**
+ * 
+ * @author Joice Marques
+ * @since 10/04/2017
+ * @category model
+ * 
+ */
+
+public class Cliente {	
+	private int idCliente;
+	private String nomeCliente;
+	private String documento_cliente;
+	private String pesquisa;
+
+	public Cliente(){
+		//metodo construtor sem parametros
+	}
+	
+	public Cliente(String nomeCliente, String documento_cliente) {
+		this.idCliente = idCliente;
+		this.nomeCliente = nomeCliente;
+		this.documento_cliente = documento_cliente;
+	}
+	
+	public String getPesquisa() {
+		return pesquisa;
+	}
+
+	public void setPesquisa(String pesquisa) {
+		this.pesquisa = pesquisa;
+	}
+
+	public String getNomeCliente() {
+		return nomeCliente;
+	}
+
+	public void setNomeCliente(String nomeCliente) {
+		this.nomeCliente = nomeCliente;
+	}
+	
+	
+	
+}

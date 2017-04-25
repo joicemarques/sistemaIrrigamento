@@ -1,0 +1,31 @@
+package com.joice.sistemaIrrigamento.model;
+
+import java.util.ArrayList;
+
+import javax.swing.table.AbstractTableModel;
+
+public class ModeloTabela extends AbstractTableModel{
+	private ArrayList dados = null;
+	private String[] colunas = null;
+	
+	public ModeloTabela(ArrayList dad, String[] col){
+		setDados(dad);
+		setColunas(col);		
+	}
+	
+	public ArrayList getDados(){
+		return dados;
+	}
+	
+	public void setDados(ArrayList dados){
+		this.dados = dados;
+	}
+	
+	public String[] getColunas(){
+		return colunas;
+	}
+	
+	public void setColunas(String [] colunas){
+		this.colunas = colunas;
+	}
+}

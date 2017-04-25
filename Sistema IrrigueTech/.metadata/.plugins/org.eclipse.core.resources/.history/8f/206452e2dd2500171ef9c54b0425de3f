@@ -1,0 +1,22 @@
+package com.joice.sistemaIrrigamento.controller;
+
+/**
+ * 
+ * @author Joice Marques
+ * @since 10/04/2017
+ * @category model
+ * 
+ */
+
+import com.joice.sistemaIrrigamento.model.Cliente;
+import com.joice.sistemaIrrigamento.view.LoginView;
+
+public class ClienteController {
+	Cliente cli = new Cliente();
+	static LoginView log = new LoginView(); 
+
+	public static void main(String[] args){
+		log.setVisible(true);
+	}
+
+}

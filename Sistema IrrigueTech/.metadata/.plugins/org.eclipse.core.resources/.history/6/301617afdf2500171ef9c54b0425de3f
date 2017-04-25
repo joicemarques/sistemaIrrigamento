@@ -1,0 +1,40 @@
+package com.joice.sistemaIrrigamento.model;
+
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+/**
+ * 
+ * @author Joice Marques
+ * @since 10/04/2017
+ * @category model
+ * 
+ */
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Chamado {
+	private int dataChamado;
+	private Cliente cliente;
+	ConnectionModel conn = new ConnectionModel();
+	PreparedStatement pst = null;
+	List<Atendimento> atendimentos = new ArrayList<Atendimento>();
+	
+	public Chamado(int dataChamado, Cliente cliente, List<Atendimento> atendimentos) {
+		this.dataChamado = dataChamado;
+		this.cliente = cliente;
+		this.atendimentos = atendimentos;
+	}
+	
+	public void gravaDadosChamado(String sql) throws SQLException {
+		pst = conn.getConexao().prepareStatement(sql);
+		pst.setString(1, tDataAtendimento.getText());
+		pst.setString(2, txDescricaoAtendimento.getText());
+		pst.setString(3, (String) cbEquipe.getSelectedItem());
+		pst.setInt(4, 1);
+		pst.execute();
+		conn.getConexao().close();
+	}
+
+}

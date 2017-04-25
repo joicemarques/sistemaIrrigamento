@@ -1,0 +1,37 @@
+package com.joice.sistemaIrrigamento.model;
+
+/**
+ * 
+ * @author Joice Marques
+ * @since 10/04/2017
+ * @category model
+ * 
+ */
+
+public class Cliente {	
+	private int idCliente;
+	private String nomeCliente;
+	private String cpfCliente;
+	private String pesquisa;
+	
+	public Cliente(){
+		//metodo construtor sem parametros
+	}
+	
+	public Cliente(int idCliente, String nomeCliente, String cpfCliente) {
+		this.idCliente = idCliente;
+		this.nomeCliente = nomeCliente;
+		this.cpfCliente = cpfCliente;
+	}
+	
+	public String getPesquisa() {
+		return pesquisa;
+	}
+
+	public void setPesquisa(String pesquisa) {
+		this.pesquisa = pesquisa;
+	}
+
+
+	
+}

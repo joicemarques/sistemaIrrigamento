@@ -1,0 +1,63 @@
+package com.joice.sistemaIrrigamento.model;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+/**
+ * 
+ * @author Joice Marques
+ * @since 10/04/2017
+ * @category model
+ * 
+ */
+
+public class ConnectionModel {
+	//cria string de conexao do banco
+	private static String connection;
+	private Statement stm;
+	
+	public static Connection getConexao() throws ClassNotFoundException, SQLException {
+		connection = "jdbc:postgresql://localhost:5432/projeto?user=postgres&password=postgres";
+        Class.forName("org.postgresql.Driver");
+        
+        // Retorna driver pronto
+        return DriverManager.getConnection(connection);
+    }
+	
+	//valida o login que o usuario informou
+    public boolean validar_login(String usuario, String senha) {
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection con = getConexao();
+            PreparedStatement pst = con.prepareStatement("SELECT * FROM cadastro WHERE usuario=? and senha=?");
+            pst.setString(1, usuario);
+            pst.setString(2, senha);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) { 
+                return true; // nessa caso a query retornou pelo menos uma linha que contem os dados inseridos
+            } else {
+                return false; // nesse caso a query nao retornou nenhuma linha, logo os valores sao invalidos
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+        	//retorna os erros que ocorrerem
+        	System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    public ResultSet consulta(String sql) {
+        ResultSet rs = null;
+        try {
+            rs = stm.executeQuery(sql);
+        } catch (SQLException e) {
+            System.err.println("Excessão: " + e.toString());
+        }
+
+        return rs;
+    }
+   
+}

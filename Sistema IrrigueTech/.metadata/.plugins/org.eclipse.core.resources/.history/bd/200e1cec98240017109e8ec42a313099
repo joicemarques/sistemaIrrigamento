@@ -1,0 +1,61 @@
+package com.joice.sistemaIrrigamento.model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+/**
+ * 
+ * @author Joice Marques
+ * @since 10/04/2017
+ * @category model
+ * 
+ */
+
+public class Cliente {	
+	private int idCliente;
+	private String nomeCliente;
+	private String cpfCliente;
+	private String pesquisa;
+	Connection conn = null;
+	PreparedStatement pst = null;
+	ResultSet rs = null;
+	
+	public Cliente(){
+		//metodo construtor sem parametros
+	}
+	
+	public Cliente(int idCliente, String nomeCliente, String cpfCliente) {
+		this.idCliente = idCliente;
+		this.nomeCliente = nomeCliente;
+		this.cpfCliente = cpfCliente;
+	}
+	
+	public String getPesquisa() {
+		return pesquisa;
+	}
+
+	public void setPesquisa(String pesquisa) {
+		this.pesquisa = pesquisa;
+	}
+
+	public String getNomeCliente() {
+		return nomeCliente;
+	}
+
+	public void setNomeCliente(String nomeCliente) {
+		this.nomeCliente = nomeCliente;
+	}
+	
+	public Cliente buscaCliente(Cliente cliente) throws SQLException{
+		String sql = "Select * from cliente where nome_cleinte like '%" + getPesquisa()+ "%'";
+		conn = ConnectionModel.getConexao();
+		pst = conn.prepareStatement(sql);
+		rs = pst.executeQuery();
+		
+		
+		return cliente;
+	}
+	
+}

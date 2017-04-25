@@ -1,0 +1,5 @@
+package com.joice.sistemaIrrigamento.model;
+
+public class ClienteModel {
+	
+}

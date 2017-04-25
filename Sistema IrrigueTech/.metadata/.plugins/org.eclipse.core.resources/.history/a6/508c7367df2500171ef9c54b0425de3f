@@ -1,0 +1,25 @@
+package com.joice.sistemaIrrigamento.model;
+
+/**
+ * 
+ * @author Joice Marques
+ * @since 10/04/2017
+ * @category model
+ * 
+ */
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Chamado {
+	private int dataChamado;
+	private Cliente cliente;
+	List<Atendimento> atendimentos = new ArrayList<Atendimento>();
+	
+	public Chamado(int dataChamado, Cliente cliente, List<Atendimento> atendimentos) {
+		this.dataChamado = dataChamado;
+		this.cliente = cliente;
+		this.atendimentos = atendimentos;
+	}
+
+}

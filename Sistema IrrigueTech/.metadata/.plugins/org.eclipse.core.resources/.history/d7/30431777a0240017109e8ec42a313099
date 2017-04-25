@@ -1,0 +1,72 @@
+package com.joice.sistemaIrrigamento.model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.table.DefaultTableModel;
+
+import com.joice.sistemaIrrigamento.view.PrincipalView;
+
+/**
+ * 
+ * @author Joice Marques
+ * @since 10/04/2017
+ * @category model
+ * 
+ */
+
+public class Cliente {	
+	private int idCliente;
+	private String nomeCliente;
+	private String documento_cliente;
+	private int quantidade_mangueiras;
+	private String pesquisa;
+
+	public Cliente(){
+		//metodo construtor sem parametros
+	}
+	
+	public Cliente(String nomeCliente, String documento_cliente, int quantidade_mangueiras) {
+		this.idCliente = idCliente;
+		this.nomeCliente = nomeCliente;
+		this.documento_cliente = documento_cliente;
+		this.quantidade_mangueiras = quantidade_mangueiras;
+	}
+	
+	public String getPesquisa() {
+		return pesquisa;
+	}
+
+	public void setPesquisa(String pesquisa) {
+		this.pesquisa = pesquisa;
+	}
+
+	public String getNomeCliente() {
+		return nomeCliente;
+	}
+
+	public void setNomeCliente(String nomeCliente) {
+		this.nomeCliente = nomeCliente;
+	}
+
+	public String getDocumento_cliente() {
+		return documento_cliente;
+	}
+
+	public void setDocumento_cliente(String documento_cliente) {
+		this.documento_cliente = documento_cliente;
+	}
+
+	public int getQuantidade_mangueiras() {
+		return quantidade_mangueiras;
+	}
+
+	public void setQuantidade_mangueiras(int quantidade_mangueiras) {
+		this.quantidade_mangueiras = quantidade_mangueiras;
+	}
+	
+}

@@ -1,0 +1,29 @@
+package com.joice.sistemaIrrigamento.controller;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+/**
+ * 
+ * @author Joice Marques
+ * @since 10/04/2017
+ * @category model
+ * 
+ */
+
+import com.joice.sistemaIrrigamento.model.Cliente;
+import com.joice.sistemaIrrigamento.model.ConnectionModel;
+import com.joice.sistemaIrrigamento.view.LoginView;
+import com.joice.sistemaIrrigamento.view.PrincipalView;
+
+public class ClienteController {
+	Cliente cli = new Cliente();
+	static LoginView log = new LoginView(); 
+
+	public static void main(String[] args){
+		log.setVisible(true);
+	}
+
+}

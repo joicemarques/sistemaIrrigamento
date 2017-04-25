@@ -1,0 +1,134 @@
+package com.joice.sistemaIrrigamento.view;
+
+/**
+ * 
+ * @author Joice Marques
+ * @since 10/04/2017
+ * @category model
+ * 
+ */
+		
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JComboBox;
+import com.joice.sistemaIrrigamento.model.ConnectionModel;
+
+import javax.swing.JTextField;
+import javax.swing.JFormattedTextField;
+import javax.swing.JLabel;
+import java.awt.Font;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JTable;
+
+public class AtendimentoView extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField tDataAtendimento;
+	private JComboBox<String> cbEquipe;
+	Connection conn = null;
+	PreparedStatement pst = null;
+	ResultSet rs = null;
+	private JTextField txNomeCli;
+	private String nome;
+	private JTable tbMangueirasCliente;
+
+	//metodo recebe string do nome da empresa da classe PrincipalView
+	public AtendimentoView(String nome) throws SQLException {
+		this.nome = nome;
+		
+		conn = ConnectionModel.getConexao();
+		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 600, 400);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		cbEquipe = new JComboBox();
+		cbEquipe.setFont(new Font("Century Gothic", Font.PLAIN, 12));
+		cbEquipe.setBounds(326, 193, 209, 20);
+		contentPane.add(cbEquipe);
+		
+		tDataAtendimento = new JTextField();
+		tDataAtendimento.setFont(new Font("Century Gothic", Font.PLAIN, 12));
+		tDataAtendimento.setBounds(46, 193, 118, 20);
+		contentPane.add(tDataAtendimento);
+		tDataAtendimento.setColumns(10);
+		
+		JFormattedTextField txDescricaoAtendimento = new JFormattedTextField();
+		txDescricaoAtendimento.setFont(new Font("Century Gothic", Font.PLAIN, 12));
+		txDescricaoAtendimento.setBounds(46, 240, 489, 76);
+		contentPane.add(txDescricaoAtendimento);
+		
+		JLabel lbData = new JLabel("Data Atendimento:");
+		lbData.setFont(new Font("Century Gothic", Font.PLAIN, 12));
+		lbData.setBounds(46, 165, 118, 34);
+		contentPane.add(lbData);
+		
+		JLabel lblEquipe = new JLabel("Equipe:");
+		lblEquipe.setFont(new Font("Century Gothic", Font.PLAIN, 12));
+		lblEquipe.setBounds(326, 172, 67, 20);
+		contentPane.add(lblEquipe);
+		
+		JLabel lblDescrioAtendimento = new JLabel("Descri\u00E7\u00E3o Atendimento:");
+		lblDescrioAtendimento.setFont(new Font("Century Gothic", Font.PLAIN, 12));
+		lblDescrioAtendimento.setBounds(46, 211, 177, 34);
+		contentPane.add(lblDescrioAtendimento);
+		
+		JLabel lbCliente = new JLabel("Cliente:");
+		lbCliente.setFont(new Font("Century Gothic", Font.PLAIN, 12));
+		lbCliente.setBounds(46, 11, 118, 14);
+		contentPane.add(lbCliente);
+		
+		txNomeCli = new JTextField();
+		txNomeCli.setEditable(false);
+		txNomeCli.setFont(new Font("Century Gothic", Font.PLAIN, 12));
+		txNomeCli.setBounds(46, 25, 489, 20);
+		contentPane.add(txNomeCli);
+		txNomeCli.setColumns(10);
+		txNomeCli.setText(nome);
+		
+		JButton btnEncerrar = new JButton("Encerrar");
+		btnEncerrar.setBounds(446, 327, 89, 23);
+		contentPane.add(btnEncerrar);
+		
+		JButton btnEnviar = new JButton("Enviar");
+		btnEnviar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnEnviar.setBounds(347, 327, 89, 23);
+		contentPane.add(btnEnviar);
+		
+		tbMangueirasCliente = new JTable();
+		tbMangueirasCliente.setBounds(46, 56, 489, 98);
+		contentPane.add(tbMangueirasCliente);
+		
+		this.equipeComboBox();
+		String eventMask;
+		
+	}
+	
+	public void equipeComboBox() throws SQLException{
+		String sql = "SELECT * FROM equipe";		
+		try {
+			pst = conn.prepareStatement(sql);
+			rs = pst.executeQuery();
+			
+			while(rs.next()){
+				cbEquipe.addItem(rs.getString("nome_equipe"));
+			}		
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+}

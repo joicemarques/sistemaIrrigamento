@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jdbcDataAdapter class="net.sf.jasperreports.data.jdbc.JdbcDataAdapterImpl"><name>projeto</name><driver>org.postgresql.Driver</driver><username>postgres</username><password>postgre</password><savePassword>true</savePassword><url>jdbc:postgresql://localhost:5432/database</url><database></database><serverAddress></serverAddress><classpath>G:\3° semestre - 2016\2° LP3 - Leandro\Conector_JDBC_PostgreSQL\postgresql-9.4-1201.jdbc4.jar</classpath></jdbcDataAdapter>
